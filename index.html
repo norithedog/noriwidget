@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Widget</title>
+  <style>
+    body {
+      font-family: Futura, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      background-color: transparent;
+      color: #333333;
+    }
+
+    #widget-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f4f4;
+      border-radius: 20px;
+      padding: 20px;
+      min-width: 200px;
+      max-width: 400px;
+      min-height: 200px;
+      max-height: 400px;
+    }
+
+    #top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    #date {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    #time {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    #gif-container {
+      width: 100%;
+      height: 0;
+      padding-bottom: 70%; /* aspect ratio of 10:7 */
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    #gif-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    #gif-text {
+      font-size: 20px;
+      text-align: center;
+      line-height: 1.5;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="widget-container">
+    <div id="top-row">
+      <div id="date"></div>
+      <div id="time"></div>
+    </div>
+    <div id="gif-container">
+      <img id="gif-img" src="" alt="GIF image">
+    </div>
+    <div id="gif-text"></div>
+  </div>
+
+  <script>
+    // Get the current time
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var ampm = hour >= 12 ? "PM" : "AM";
+    var date = now.toLocaleDateString("en-US", { month: "short", day: "numeric" }).toUpperCase();
+  
+    // Update the time and date elements
+    document.getElementById("date").innerHTML = date;
+    document.getElementById("time").innerHTML = hour % 12 + ":" + (minute < 10 ? "0" : "") + minute + ampm;
+  
+    // Set the src attribute of the gif image
+    document.getElementById("gif-img").src = "your_gif_url_here";
+  
+    // Set the text content of the gif text element
+    document.getElementById("gif-text").textContent = "Your gif caption here";
+
+// Update the time every second
+setInterval(function() {
+  var now = new Date();
+  var hour = now.getHours();
+  var minute = now.getMinutes();
+  var ampm = hour >= 12 ? "PM" : "AM";
+  var date = now.toLocaleDateString("en-US", { month: "short", day: "numeric" }).toUpperCase();
+
+  document.getElementById("date").innerHTML = date;
+  document.getElementById("time").innerHTML = hour % 12 + ":" + (minute < 10 ? "0" : "") + minute + ampm;
+}, 1000);
+  </script>
+</body>
+</html>
+
+<script>
+
+// Get the current time
+var now = new Date();
+var hour = now.getHours();
+var minute = now.getMinutes();
+var ampm = hour >= 12 ? "PM" : "AM";
+var date = now.toLocaleDateString("en-US", { month: "short", day: "numeric" }).toUpperCase();
+
+// Update the time and date elements
+document.getElementById("date").innerHTML = date;
+document.getElementById("time").innerHTML = hour % 12 + ":" + (minute < 10 ? "0" : "") + minute + ampm;
+
+
+// Update the time every second
+setInterval(function() {
+  var now = new Date();
+  var hour = now.getHours();
+  var minute = now.getMinutes();
+  var ampm = hour >= 12 ? "PM" : "AM";
+  var date = now.toLocaleDateString("en-US", { month: "short", day: "numeric" }).toUpperCase();
+
+  document.getElementById("date").innerHTML = date;
+  document.getElementById("time").innerHTML = hour % 12 + ":" + (minute < 10 ? "0" : "") + minute + ampm;
+}, 1000);
+
+
+// Get the GIF image and GIF text elements
+var gifImg = document.getElementById("gif-img");
+var gifText = document.getElementById("gif-text");
+
+// Update the GIF and text based on the time
+setInterval(function() {
+console.log("tobie smells")
+var gifImg = document.getElementById("gif-img");
+var gifText = document.getElementById("gif-text");
+if (hour >= 21 || hour < 7) {
+  gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG0xMzFzenk1bjRpMGpmeXg1ajZmMmhxYmxwbDIwam0wcW52OXIzaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Gh5IUfF5HlUQ5IH6hu/giphy.gif";
+  gifText.innerHTML = "NORI IS SLEEPING";
+} else if (hour == 7 && minute < 30) {
+  gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnp4OTUxenVzaGUyYjAya3VtMmk5eDViOWphOThmMWF3czR2OTY5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/0xD7mN36NaqLDD837n/giphy.gif";
+  gifText.innerHTML = "NORI IS ON A WALK";
+} else if (hour == 7 && minute >= 30 || hour == 8 && minute < 0) {
+  gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb29qeDB6ZmppNnIydXZqNjFibmdwNWl2bHIybXkyenNpaXZhMGtoMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/xirbK3FuqbXIc6TGGv/giphy.gif";
+  gifText.innerHTML = "NORI IS EATING BREAKFAST";
+} else if (hour >= 8 && hour < 10) {
+  gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXR0czluN3Q1dDc3enl4d3J5N25ncnF5bTV5NWQydTFwMmdocDJjZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TTm0vWMZHRK6NyWVoa/giphy.gif";
+  gifText.innerHTML = "NORI IS TAKING A NAP";
+} else if (hour == 10) {
+  gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWE5ZDlwZ3VpOGIyazIwMnF2YnY2OGkwYmQwbGxkNG9meDNpazllcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Yn96qnZK7OOAC7fbl7/giphy.gif";
+  gifText.innerHTML = "NORI IS THINKING ABOUT YOU";
+} else if (hour == 11) {
+  gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODZsOWdkZnFiYnFmNTQ3NjBtam45OGc2aW5maHhpdzlwNXRhb3YyaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/M7UUD8yCVmTnP0CEAr/giphy.gif";
+  gifText.innerHTML = "NORI IS PLAYING";
+} else if (hour >= 12 && hour < 14) {
+  gifImg.src = "https://media.giphy.com/media/u4K1Zj9CKdxtC6rnUT/giphy.gif";
+  gifText.innerHTML = "NORI IS TAKING ANOTHER NAP";
+} else if (hour == 14 && minute >= 0 && hour < 15) {
+gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWE5ZDlwZ3VpOGIyazIwMnF2YnY2OGkwYmQwbGxkNG9meDNpazllcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Yn96qnZK7OOAC7fbl7/giphy.gif";
+gifText.innerHTML = "NORI IS THINKING ABOUT YOU AGAIN";
+} else if (hour == 15 && minute >= 0 && hour < 16) {
+gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3hrNnZzMG5wZmZtYWtmaGx2MDJoem1nN2x0NXc2NGQzMzhqNHpjaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/GlPi96hmXjAUJIp0fr/giphy.gif";
+gifText.innerHTML = "NORI IS PLAYING";
+} else if (hour == 16 && minute >= 0 && hour < 17) {
+gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXR0czluN3Q1dDc3enl4d3J5N25ncnF5bTV5NWQydTFwMmdocDJjZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TTm0vWMZHRK6NyWVoa/giphy.gif";
+gifText.innerHTML = "NORI IS TAKING A NAP";
+} else if (hour == 17 && minute >= 0 && hour < 18) {
+gifImg.src ="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnp4OTUxenVzaGUyYjAya3VtMmk5eDViOWphOThmMWF3czR2OTY5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/0xD7mN36NaqLDD837n/giphy.gif";
+gifText.innerHTML = "NORI IS ON A WALK";
+} else if (hour == 17 && minute >= 30 && hour < 18) {
+gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb29qeDB6ZmppNnIydXZqNjFibmdwNWl2bHIybXkyenNpaXZhMGtoMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/xirbK3FuqbXIc6TGGv/giphy.gif";
+gifText.innerHTML = "NORI IS EATING DINNER";
+} else if (hour >= 18 && hour < 19) {
+gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWE5ZDlwZ3VpOGIyazIwMnF2YnY2OGkwYmQwbGxkNG9meDNpazllcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Yn96qnZK7OOAC7fbl7/giphy.gif";
+gifText.innerHTML = "NORI IS WAITING FOR YOU TO COME HOME";
+} else if (hour == 19 && minute >= 0 && hour < 20) {
+gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODZsOWdkZnFiYnFmNTQ3NjBtam45OGc2aW5maHhpdzlwNXRhb3YyaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/M7UUD8yCVmTnP0CEAr/giphy.gif";
+gifText.innerHTML = "NORI IS PLAYING";
+} else if (hour == 20 && minute >= 0 && hour < 21) {
+gifImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXR0czluN3Q1dDc3enl4d3J5N25ncnF5bTV5NWQydTFwMmdocDJjZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TTm0vWMZHRK6NyWVoa/giphy.gif";
+gifText.innerHTML = "NORI IS TAKING ANOTHER NAP";
+}
+}, 1000);
+
+// Get the current time
+var now = new Date();
+var hours = now.getHours();
+
+// Check if it's between 9pm and 6:59am
+if (hours >= 21 || hours < 7) {
+  // Set the container background color to #444d57
+  document.getElementById("widget-container").style.backgroundColor = "#3d434a";
+  
+  // Set the text color to white
+  document.getElementById("top-row").style.color = "white";
+     document.getElementById("gif-text").style.color = "white";
+}
+  </script>
